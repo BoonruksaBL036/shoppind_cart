@@ -12,7 +12,7 @@ const ProductCart = () => {
           </span>
         </div>
         <div class="mt-4 text-white">
-          <h3 class="text-lg font-medium">Laptop</h3>
+          <h3 class="text-lg font-medium"></h3>
 
           <p class="text-sm text-gray-400 mt-2 leading-relaxed">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
