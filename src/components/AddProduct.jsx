@@ -26,16 +26,22 @@ const AddProduct = () => {
         Add New Product
       </h2>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label className="text-sm text-gray-600">Product Name</label>
           <input
             type="text"
+            {...register("title", { required: true })}
             className="w-full mt-1 px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <div>
-          <label className="text-sm text-gray-600">Category</label>
+          <label
+            {...register("category", { required: true })}
+            className="text-sm text-gray-600"
+          >
+            Category
+          </label>
           <select className="w-full mt-1 px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option>Select a category</option>
             <option>Electronics</option>
@@ -44,7 +50,12 @@ const AddProduct = () => {
           </select>
         </div>
         <div>
-          <label className="text-sm text-gray-600">Image URL</label>
+          <label
+            {...register("imageUrl", { required: true })}
+            className="text-sm text-gray-600"
+          >
+            Image URL
+          </label>
           <input
             type="text"
             className="w-full mt-1 px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -52,7 +63,12 @@ const AddProduct = () => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-sm text-gray-600">Price</label>
+            <label
+              {...register('price', { required: true })}
+              className="text-sm text-gray-600"
+            >
+              Price
+            </label>
             <input
               type="number"
               className="w-full mt-1 px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -60,7 +76,12 @@ const AddProduct = () => {
           </div>
 
           <div>
-            <label className="text-sm text-gray-600">Quantity</label>
+            <label
+              {...register('quantity', { required: true })}
+              className="text-sm text-gray-600"
+            >
+              Quantity
+            </label>
             <input
               type="number"
               className="w-full mt-1 px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -69,7 +90,6 @@ const AddProduct = () => {
         </div>
 
         <button
-          onClick={() => onSubmit()}
           type="submit"
           className="w-full mt-4 bg-indigo-500 hover:bg-indigo-600 transition text-white py-2 rounded-lg"
         >

@@ -7,8 +7,8 @@ const Navbar = () => {
         dispatch ({type: pageType});
     }
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="flex-1">
+    <div className="navbar bg-indigo-800 text-white shadow-md px-6">
+      <div className="flex-1 ">
         <a className="btn btn-ghost text-xl">SE Shopping Cart</a>
       </div>
       <div className="flex-none space-x-2">

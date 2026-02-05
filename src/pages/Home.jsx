@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCart from "../components/ProductCart";
+import ProductCard from "../components/ProductCard";
 import NewProduct from "../components/AddProduct";
 import { useSelector } from "react-redux";
 
@@ -10,7 +10,7 @@ const Home = () => {
       <div className="col-span-2 grid xl:grid-cols-2 md:grid-cols-1 gap-4 sm:grid-cols-1">
         {product &&
           product.map((item) => (
-            <ProductCart
+            <ProductCard
               key={item.id}
               id={item.id}
               productName={item.productName}
