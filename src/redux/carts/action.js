@@ -6,6 +6,8 @@ import {
 } from "./actionTypes";
 
 export const addToCart = (product) => {
+  console.log("add to cart function");
+
   return {
     type: ADD_TO_CART,
     payload: product,
@@ -25,7 +27,6 @@ export const increaseQuantity = (productId) => {
     payload: productId,
   };
 };
-
 export const decreaseQuantity = (productId) => {
   return {
     type: DECREASE_QUANTITY,

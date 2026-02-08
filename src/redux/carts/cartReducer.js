@@ -7,11 +7,11 @@ import {
 import { initialState } from "./initialState";
 
 const nextId = (item) => {
-  return item.reduce((id, item) => Math.max(id, item.item.id), -1) + 1;
+  return item.reduce((id, item) => Math.max(id, item.id), -1) + 1;
 };
 
 const findProductInCart = (state, action) => {
-  return state.find((product) => product.id === action.payload.id);
+  return state.find((product) => product.productId === action.payload.id);
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const cartReducer = (state = initialState, action) => {
       const product = findProductInCart(state, action);
       if (product) {
         return state.map((p) => {
-          if (p.id === product.id) {
+          if (p.productId === product.productId) {
             return { ...p, quantity: p.quantity + 1 };
           } else {
             return p;
@@ -33,7 +33,7 @@ const cartReducer = (state = initialState, action) => {
             ...action.payload,
             id: nextId(state),
             quantity: 1,
-            productId: action.payload,
+            productId: action.payload.id,
           },
         ];
       }
@@ -43,7 +43,7 @@ const cartReducer = (state = initialState, action) => {
 
     case INCREASE_QUANTITY:
       return state.map((product) => {
-        if (product.id === action.payload) {
+        if (product.productId === action.payload) {
           return {
             ...product,
             quantity: product.quantity + 1,
@@ -55,7 +55,7 @@ const cartReducer = (state = initialState, action) => {
 
     case DECREASE_QUANTITY:
       return state.map((product) => {
-        if (product.id === action.payload) {
+        if (product.productId === action.payload) {
           return {
             ...product,
             quantity: product.quantity - 1,

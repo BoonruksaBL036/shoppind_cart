@@ -3,38 +3,53 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/carts/action";
 import { removeQuantity } from "../redux/products/action";
 
-const ProductCard = ({ id, productName, category, price, quantity }) => {
+const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     dispatch(removeQuantity(product.id));
   };
-  return (
-    <div>
-      <div className="bg-[#1f2933] w-72 rounded-2xl p-4 shadow-lg">
-        <div className="relative">
-          <img
-            src={productCard.imageUrl}
-            className="w-full h-40 object-cover rounded-xl"
-          />
-
-          <span className="absolute top-2 right-2 bg-pink-500 text-xs text-white px-3 py-1 rounded-full">
-            Electronics
-          </span>
+ return (
+    <div className="flex flex-col text-gray-600 h-full bg-white">
+      <div className="relative aspect-square w-full rounded-2xl overflow-hidden mb-4 bg-gray-100 border border-gray-100">
+        <img
+          src={product.imageUrl}
+          alt={product.title}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.target.src =
+              "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop";
+          }}
+        />
+        <div className="absolute top-2 right-2 bg-pink-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+          {product.category}
         </div>
-        <div className="mt-4 text-white">
-          <h3 className="text-lg font-medium"></h3>
+      </div>
 
-          <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-            {ProductCard.title}
-          </p>
-          <div className="flex justify-between items-center mt-3 text-sm">
-            <span className="text-gray-400">Available: 10</span>
-            <span className="font-semibold">$1200</span>
+      <div className="px-1 flex flex-col flex-grow">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 min-h-[1.75rem] line-clamp-1">
+          {product.title}
+        </h2>
+
+        <p className="text-gray-500 text-sm mb-3 min-h-[3rem] line-clamp-2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione fuga
+        </p>
+
+        <div className="mt-auto">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-gray-400 text-sm font-normal">
+              Available: {product.quantity}
+            </span>
+            <span className="text-lg font-bold text-gray-800">
+              ${product.price}
+            </span>
           </div>
 
-          <button className="mt-4 bg-indigo-500 hover:bg-indigo-600 transition text-xs px-4 py-2 rounded-lg">
+          <button
+            className="bg-indigo-100 hover:bg-indigo-600 hover:text-white text-indigo-700 text-sm font-semibold py-2 px-6 rounded-lg transition-all w-fit"
+            disabled={product.quantity === 0}
+            onClick={handleAddToCart}
+          >
             Buy Now
           </button>
         </div>

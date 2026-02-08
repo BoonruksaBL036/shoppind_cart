@@ -29,10 +29,10 @@ const productReducer = (state = initialState, action) => {
       });
     case REMOVE_QUANTITY:
       return state.map((product) => {
-        if (product.id === action.payload) {
+        if (product.id === action.payload.productId) {
           return {
             ...product,
-            quantity: product.quantity - 1,
+            quantity: product.quantity - action.payload.quantity,
           };
         } else {
           return product;
